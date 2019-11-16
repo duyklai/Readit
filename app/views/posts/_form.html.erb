@@ -12,6 +12,21 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.text_field :tag %>
+  </div>
+
+  <div class="field">
     <%= form.label :user_id %>
     <%= form.number_field :user_id %>
   </div>
@@ -19,11 +34,6 @@
   <div class="field">
     <%= form.label :points %>
     <%= form.number_field :points %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tag %>
-    <%= form.text_field :tag %>
   </div>
 
   <div class="actions">

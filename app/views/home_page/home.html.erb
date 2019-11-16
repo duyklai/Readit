@@ -1,1 +1,15 @@
-<h1>Weclome to Readit</h1>
+<div class="home-title">
+  <h1>Weclome to Readit</h1>
+</div>
+
+<div class="posts-container">
+  <table class="posts-table">
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.name, post_path(post.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "Create a New Article", new_post_path, class: "new_article" %>
