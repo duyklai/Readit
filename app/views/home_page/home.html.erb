@@ -6,10 +6,11 @@
   <table class="posts-table">
     <% @posts.each do |post| %>
       <tr>
-        <td><%= link_to post.name, post_path(post.id) %></td>
+        <td><%= link_to post.title, post_path(post.id) %></td>
+        <td>Points: <%= post.points %></td>
       </tr>
     <% end %>
   </table>
 </div>
 
-<%= link_to "Create a New Article", new_post_path, class: "new_article" %>
+<%= link_to "Create a New Post", new_post_path, class: "new_article" %>
