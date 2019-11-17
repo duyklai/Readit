@@ -5,13 +5,13 @@ RSpec.describe "comments/index", type: :view do
     assign(:comments, [
       Comment.create!(
         :user_id => 2,
-        :posts_id => 3,
+        :post_id => 3,
         :points => 4,
         :body => "Body"
       ),
       Comment.create!(
         :user_id => 2,
-        :posts_id => 3,
+        :post_id => 3,
         :points => 4,
         :body => "Body"
       )

@@ -29,11 +29,11 @@ RSpec.describe CommentsController, type: :controller do
   # Comment. As you add validations to Comment, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { user_id: 1, points: 1, post_id: 1, body: 'MyBody' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { user_id: nil, points: nil, post_id: nil, body: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +97,17 @@ RSpec.describe CommentsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { user_id: 2, points: 2, post_id: 2, body: 'MyNewBody' }
       }
 
       it "updates the requested comment" do
         comment = Comment.create! valid_attributes
         put :update, params: {id: comment.to_param, comment: new_attributes}, session: valid_session
         comment.reload
-        skip("Add assertions for updated state")
+        expect(comment.user_id).to eq(2)
+        expect(comment.points).to eq(2)
+        expect(comment.post_id).to eq(2)
+        expect(comment.body).to eq('MyNewBody')
       end
 
       it "redirects to the comment" do
