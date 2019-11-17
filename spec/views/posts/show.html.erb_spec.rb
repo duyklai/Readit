@@ -5,7 +5,9 @@ RSpec.describe "posts/show", type: :view do
     @post = assign(:post, Post.create!(
       :user_id => 2,
       :points => 3,
-      :tag => "Tag"
+      :tag => "Tag",
+      :title => "Title",
+      :body => "Body"
     ))
   end
 

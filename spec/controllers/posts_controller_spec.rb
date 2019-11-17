@@ -29,11 +29,11 @@ RSpec.describe PostsController, type: :controller do
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { user_id: 1, points: 1, tag: 'MyTag', title: 'MyTitle', body: 'MyBody' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { user_id: nil, points: nil, tag: nil, title: nil, body: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -97,14 +97,18 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { user_id: 2, points: 2, tag: 'MyNewTag', title: 'MyNewTitle', body: 'MyNewBody'}
       }
 
       it "updates the requested post" do
         post = Post.create! valid_attributes
         put :update, params: {id: post.to_param, post: new_attributes}, session: valid_session
         post.reload
-        skip("Add assertions for updated state")
+        expect(post.user_id).to eq(2)
+        expect(post.points).to eq(2)
+        expect(post.tag).to eq('MyNewTag')
+        expect(post.title).to eq('MyNewTitle')
+        expect(post.body).to eq('MyNewBody')
       end
 
       it "redirects to the post" do

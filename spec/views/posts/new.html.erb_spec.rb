@@ -5,7 +5,9 @@ RSpec.describe "posts/new", type: :view do
     assign(:post, Post.new(
       :user_id => 1,
       :points => 1,
-      :tag => "MyString"
+      :tag => "MyString",
+      :title => "MyTitle",
+      :body => "MyBody"
     ))
   end
 

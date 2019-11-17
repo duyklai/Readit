@@ -6,12 +6,16 @@ RSpec.describe "posts/index", type: :view do
       Post.create!(
         :user_id => 2,
         :points => 3,
-        :tag => "Tag"
+        :tag => "Tag",
+        :title => "Title",
+        :body => "Body"
       ),
       Post.create!(
         :user_id => 2,
         :points => 3,
-        :tag => "Tag"
+        :tag => "Tag",
+        :title => "Title",
+        :body => "Body"
       )
     ])
   end
