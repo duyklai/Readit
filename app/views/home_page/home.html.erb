@@ -9,6 +9,10 @@
         <td><%= link_to post.title, post_path(post.id) %></td>
         <td>User: <%= post.user.username %>, ID: <%= post.user_id %></td>
         <td>Points: <%= post.points %></td>
+        <% if post.user == current_user %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
