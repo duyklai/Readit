@@ -1,3 +1,80 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.original-post {
+  background-color: #f1f1f1;
+  box-shadow: 2px 2px 5px #292929;
+  border-radius: 20px;
+  width: 800px;
+  padding: 0px 0px 19px 0px;
+  margin: 0px 0px 0px 20px;
+}
+
+.post-title {
+  font-size: 40px;
+  font-weight: bold;
+  padding: 10px 0px 0px 0px;
+  margin-left: 50px;
+  letter-spacing: 1px;
+}
+
+.post-info-table {
+  font-size: 12px;
+  margin-left: 50px;
+  color: #919191;
+  letter-spacing: 1px;
+}
+  
+.post-info-tbody td{
+  padding: 0px 5px 7px 0px;
+}
+
+.post-heading {
+  margin-bottom: 0px;
+}
+
+.inc-points,
+.dec-points {
+  font-size: 15px
+}
+
+.points {
+  padding-left: 3px;
+}
+
+.post-points {
+  float: left;
+  width: 25px;
+  margin: 0 0 0 20px;
+  padding-top: 15px;
+}
+
+.post-body {
+  border: 2px solid black;
+  padding: 5px 15px 5px 15px;
+  letter-spacing: 1px;
+  margin-left: 50px;
+  width: 500px; 
+}
+
+.comments-section {
+  background-color: #f1f1f1;
+  box-shadow: 2px 2px 5px #292929;
+  margin: 50px 0px 0px 20px;
+  border-radius: 20px;
+  width: 800px;
+}
+
+.comment-div {
+  margin-left: 30px;
+  padding: 0px 30px 10px 0px;
+}
+
+.comment-info-div {
+  padding: 7px 0px 7px 0px;
+}
+
+.comment-body {
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+}
