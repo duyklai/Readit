@@ -1,3 +1,58 @@
 // Place all the styles related to the home_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.posts-container {
+  width: 100%;
+}
+
+.post-div {
+  background-color: #F0F2F0;
+  width: 1000px;
+  height: auto;
+
+  margin: 15px auto 0px auto;
+  padding-bottom: 5px;
+
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px black;
+}
+
+.home-post-title {
+  font-size: 45px;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px black;
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+.home-post-title a {
+  color: #acd9ac;
+  text-decoration: none;
+}
+
+.home-post-info {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #919191;
+
+  margin-bottom: 20px;
+  padding-left: 30px
+}
+
+.home-inc-points,
+.home-dec-points,
+.home-points {
+  font-size: 20px
+}
+
+.home-points {
+  padding: 3px 0px;
+}
+
+.home-post-points {
+  float: left;
+  width: 25px;
+  margin-left: 10px;
+  padding: 13px 15px 0px 0px;
+  text-align: center;
+}

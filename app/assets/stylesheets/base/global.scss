@@ -1,0 +1,40 @@
+header {
+  background: #F0F2F0;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to  right, #F0F2F0, #000C40);
+  background: linear-gradient(10deg, #F0F2F0, #000C40);
+  width: 100%;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+}
+
+header h1 {
+  display: inline;
+  font-size: 50px;
+  vertical-align: bottom;
+  text-shadow: 1px 1px 2px black;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #000C40;
+}
+
+.accounts {
+  float: right;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #F0F2F0;
+  padding: 5px 5px 6px 5px;
+}
+
+.accounts a {
+  color: #111223;
+  text-decoration: none;
+
+  &:hover {
+    text-shadow: 1px 1px 3px black;
+  }
+}
