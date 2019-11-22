@@ -1,5 +1,6 @@
 module PostsHelper
   def time_diff(end_time)
+    # Code modified from https://stackoverflow.com/questions/19595840/rails-get-the-time-difference-in-hours-minutes-and-seconds/19596579
     seconds_diff = (Time.now - end_time).to_i.abs
     
     hours = seconds_diff / 3600
@@ -31,9 +32,15 @@ module PostsHelper
         return "#{hours.to_s} days"
       end
     end
+  end
 
-    #"#{hours.to_s.rjust(2, '0')}:#{minutes.to_s.rjust(2, '0')}"
-    # or, as hagello suggested in the comments:
-    # '%02d:%02d:%02d' % [hours, minutes, seconds]
+  def display_points(points)
+    if points > 999
+      points_reform = 0.0
+      points_reform = points / 1000.0
+      return "#{points_reform.to_s}k"
+    else
+      return "#{points}"
+    end
   end
 end
