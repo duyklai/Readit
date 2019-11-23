@@ -36,11 +36,21 @@ module PostsHelper
 
   def display_points(points)
     if points > 999
-      points_reform = 0.0
       points_reform = points / 1000.0
-      return "#{points_reform.to_s}k"
+      return sprintf('%.1fk', points_reform)
     else
       return "#{points}"
+    end
+  end
+
+  def display_comments(num_comments)
+    if num_comments == 1
+      return "#{num_comments} comment"
+    elsif num_comments > 999
+      comments = num_comments / 1000.0
+      return sprintf('%.1fk comments', comments)
+    else
+      return "#{num_comments} comments"
     end
   end
 end
