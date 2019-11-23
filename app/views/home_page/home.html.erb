@@ -1,3 +1,9 @@
+<div class="create-post">
+  <form class="create-post-form">
+    <input type="text" class="create-post-bar" placeholder="Create post" size='50' />
+  </form>
+</div>
+
 <div class="posts-container">
   <% @posts.each do |post| %>
     <div class="post-div">
@@ -6,19 +12,20 @@
         <p class="home-points"><%= display_points(post.points) %></p>
         <p class="home-dec-points">&#9660;</p>
       </div>
+
       <div class="home-post-title">
         <%= link_to post.title, post_path(post.id) %>
       </div>
+
       <div class="home-post-info">
-        Submitted <%= time_diff(post.created_at) %> ago by
-        <%= post.user.username %>
-        <% if post.user == current_user %>
-          <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
-    </div>
+        <div class="home-post-date-user">
+          Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %>
+        </div>
+        <div class="post-comments-info">
+          <%= link_to '12 comments', post_path(post.id) %>
+        </div>
+      </div> <%# End of home-post-info %>
+
+    </div> <%# End of post-div %>
   <% end %>
 </div>
-<br />
-<%= link_to "Create a New Post", new_post_path, class: "new_article" %>

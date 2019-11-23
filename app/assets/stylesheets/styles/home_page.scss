@@ -1,6 +1,32 @@
 // Place all the styles related to the home_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.create-post {
+  width: 423px;
+  height: auto;
+
+  margin: 15px auto 0px auto;
+  padding: 15px 0px;
+
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px black;
+  background-color: #F0F2F0;
+}
+
+.create-post-form {
+  margin-left: 15px;
+}
+
+.create-post-bar {
+  background-color: #D8E0FF;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.create-post-bar:hover {
+  border: 2px solid rgb(0, 121, 211);
+}
+
 .posts-container {
   width: 100%;
 }
@@ -17,26 +43,14 @@
   box-shadow: 3px 3px 5px black;
 }
 
-.home-post-title {
-  font-size: 45px;
-  padding-bottom: 5px;
-  text-shadow: 1px 1px black;
-  padding-top: 5px;
-  overflow: hidden;
-}
-
-.home-post-title a {
-  color: #acd9ac;
-  text-decoration: none;
-}
-
-.home-post-info {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #919191;
-
-  margin-bottom: 20px;
-  padding-left: 30px
+.home-post-points {
+  float: left;
+  width: 25px;
+  padding: 13px 10px 13px 10px;
+  margin-right: 5px;
+  text-align: center;
+  background-color: #D8E0FF;
+  border-radius: 10px;
 }
 
 .home-inc-points,
@@ -49,10 +63,40 @@
   padding: 3px 0px;
 }
 
-.home-post-points {
-  float: left;
-  width: 25px;
-  margin-left: 10px;
-  padding: 13px 15px 0px 0px;
-  text-align: center;
+.home-post-title {
+  font-size: 45px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  overflow: hidden;
+}
+
+.home-post-title a {
+  color: #000C40;
+  text-decoration: none;
+}
+
+.home-post-info {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #919191;
+
+  padding-left: 30px
+}
+
+.home-post-date-user {
+  margin-bottom: 6px;
+}
+
+.post-comments-info {
+  margin-bottom: 2px;
+}
+
+.post-comments-info a{
+  color: #919191;
+  text-decoration: none;
+}
+
+.post-comments-info a:hover {
+  background-color: rgb(221, 223, 221);
+  border-radius: 5px;
 }
