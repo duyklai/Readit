@@ -18,9 +18,9 @@
 }
 
 .create-post-bar {
+  padding: 5px;
   background-color: #D8E0FF;
   border-radius: 5px;
-  padding: 5px;
 }
 
 .create-post-bar:hover {
@@ -45,10 +45,13 @@
 
 .home-post-points {
   float: left;
-  width: 25px;
-  padding: 13px 10px 13px 10px;
-  margin-right: 5px;
   text-align: center;
+
+  width: 25px;
+
+  padding: 13px 10px 16px 10px;
+  margin-right: 5px;
+  
   background-color: #D8E0FF;
   border-radius: 10px;
 }
@@ -59,8 +62,13 @@
   font-size: 20px
 }
 
+.home-inc-points {
+  padding-top: 3px;
+}
+
 .home-points {
-  padding: 3px 0px;
+  margin-left: -100%;
+  margin-right: -100%;
 }
 
 .home-post-title {
