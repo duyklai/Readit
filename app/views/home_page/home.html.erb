@@ -12,11 +12,9 @@
         <span class="home-points"><%= display_points(post.points) %></span>
         <p class="home-dec-points">&#9660;</p>
       </div>
-
       <div class="home-post-title">
         <%= link_to post.title, post_path(post.id) %>
       </div>
-
       <div class="home-post-info">
         <div class="home-post-date-user">
           Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %>
@@ -25,7 +23,6 @@
           <%= link_to display_comments(post.comments.length), post_path(post.id) %>
         </div>
       </div> <%# End of home-post-info %>
-
     </div> <%# End of post-div %>
   <% end %>
 </div>
