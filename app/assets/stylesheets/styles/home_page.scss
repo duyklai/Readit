@@ -10,7 +10,7 @@
 
   border-radius: 10px;
   box-shadow: 3px 3px 5px black;
-  background-color: #F0F2F0;
+  background-color: #f0f2f0;
 }
 
 .create-post-form {
@@ -19,7 +19,7 @@
 
 .create-post-bar {
   padding: 5px;
-  background-color: #D8E0FF;
+  background-color: #d8e0ff;
   border-radius: 5px;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .post-div {
-  background-color: #F0F2F0;
+  background-color: #f0f2f0;
   width: 1000px;
   height: auto;
 
@@ -51,15 +51,20 @@
 
   padding: 13px 10px 16px 10px;
   margin-right: 5px;
-  
-  background-color: #D8E0FF;
+
+  background-color: #d8e0ff;
   border-radius: 10px;
 }
 
 .home-inc-points,
 .home-dec-points,
 .home-points {
-  font-size: 20px
+  font-size: 20px;
+}
+
+.home-inc-points,
+.home-dec-points {
+  cursor: pointer;
 }
 
 .home-inc-points {
@@ -79,7 +84,7 @@
 }
 
 .home-post-title a {
-  color: #000C40;
+  color: #000c40;
   text-decoration: none;
 }
 
@@ -88,7 +93,7 @@
   letter-spacing: 2px;
   color: #919191;
 
-  padding-left: 30px
+  padding-left: 30px;
 }
 
 .home-post-date-user {
@@ -99,7 +104,7 @@
   margin-bottom: 2px;
 }
 
-.post-comments-info a{
+.post-comments-info a {
   color: #919191;
   text-decoration: none;
 }
