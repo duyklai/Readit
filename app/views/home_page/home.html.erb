@@ -8,9 +8,9 @@
   <% @posts.each do |post| %>
     <div class="post-div">
       <div class="home-post-points">
-        <p class="home-inc-points">&#9650;</p>
+        <p class="home-inc-points" id="up-points">&#9650;</p>
         <span class="home-points"><%= display_points(post.points) %></span>
-        <p class="home-dec-points">&#9660;</p>
+        <p class="home-dec-points" id="down-points">&#9660;</p>
       </div>
       <div class="home-post-title">
         <%= link_to post.title, post_path(post.id) %>
