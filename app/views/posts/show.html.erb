@@ -30,6 +30,15 @@
       <%= @post.body %>
     </div>
   </div> <%# End of post-body-div %>
+
+  <div class="post-extra-div">
+    <%= link_to display_comments(@post.comments.length), post_path(@post.id) %>
+    <a href="#">share</a>
+    <% if @post.user == current_user %>
+      <%= link_to 'edit', edit_post_path(@post) %>
+      <%= link_to 'delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
 </div> <%# End of original-post %>
 
 <div class="comments-section">
