@@ -81,9 +81,29 @@
 .comments-section {
   background-color: #f1f1f1;
   box-shadow: 2px 2px 5px #292929;
-  margin: 50px 0px 0px 20px;
+  margin: 13px 0px 0px 20px;
   border-radius: 20px;
   width: 800px;
+}
+
+.comments-section button {
+  margin-left: 30px;
+  margin-top: 15px;
+  padding: 7px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: #000c40;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.comments-section button:hover {
+  background-color: #00146e;
 }
 
 .comment-div {
