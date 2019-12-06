@@ -87,8 +87,7 @@
 }
 
 .comments-section button {
-  margin-left: 30px;
-  margin-top: 15px;
+  margin: 15px 0px 6px 30px;
   padding: 7px;
 
   border: 1px solid black;
@@ -104,6 +103,7 @@
 
 .comments-section button:hover {
   background-color: #00146e;
+  cursor: pointer;
 }
 
 .comment-div {

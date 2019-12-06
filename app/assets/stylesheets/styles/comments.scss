@@ -28,6 +28,39 @@
 
 .new-comment-container [name="commit"] {
   margin-top: 15px;
+  padding: 5px 9px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: #000c40;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.new-comment-container a {
+  padding: 5px 9px;
+
+  background-color: #000c40;
+  color: white;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.new-comment-container [name="commit"]:hover,
+.new-comment-container a:hover {
+  background-color: #00146e;
+  cursor: pointer;
 }
 
 #comment_body {
