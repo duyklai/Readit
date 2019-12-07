@@ -1,0 +1,13 @@
+<div class="column content-div">PLACEHOLDER TEXT</div>
+<div class="column user-div">
+  <h2><%= @user.username %></h2>
+  <% @user.posts.each do |post| %>
+    <p>Post Points:</p>
+    <p><%= post.points %></p>
+  <% end %>
+  <% @user.comments.each do |comment| %>
+    <p>Comment Points:</p>
+    <p><%= comment.points %></p>
+  <% end %>
+  <p><%= time_diff(@user.created_at) %></p>
+</div>
