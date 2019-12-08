@@ -1,13 +1,24 @@
-<div class="column content-div">PLACEHOLDER TEXT</div>
+<div class="column content-div">
+  <div class="tab">
+    <button class="tablinks">Overview</button>
+    <button class="tablinks">Posts</button>
+    <button class="tablinks">Comments</button>
+  </div>
+  
+  <h2>Posts:</h2>
+  <% @user.posts.each do |post| %>
+    <%= link_to post.title, post_path(post.id) %>
+  <% end %>
+  <h2>Comments:</h2>
+  <% @user.comments.each do |comment| %>
+    <%= link_to comment.post.title, comment_path(comment.id) %>
+    <%= comment.body %> <br/>
+  <% end %>
+</div>
+
 <div class="column user-div">
   <h2><%= @user.username %></h2>
-  <% @user.posts.each do |post| %>
-    <p>Post Points:</p>
-    <p><%= post.points %></p>
-  <% end %>
-  <% @user.comments.each do |comment| %>
-    <p>Comment Points:</p>
-    <p><%= comment.points %></p>
-  <% end %>
-  <p><%= time_diff(@user.created_at) %></p>
+  <p><span class="bold"><%= @user.post_total %></span> post points</p>
+  <p><span class="bold"><%= @user.comment_total %></span> comment points</p>
+  <p>This account is <%= time_diff(@user.created_at) %> old</p>
 </div>

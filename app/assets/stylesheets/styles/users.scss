@@ -1,6 +1,7 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// SCSS page for users profile
 .column {
   float: left;
 }
@@ -11,4 +12,39 @@
 
 .user-div {
   width: 25%;
+}
+
+.tab {
+  overflow: hidden;
+  border-bottom: 1px dashed #000c40;
+  width: 95%;
+  margin-left: 10px;
+}
+
+.tablinks {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 16px;
+}
+
+.tab button:hover {
+  background-color: #000c40;
+  color: white;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.user-div h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.user-div p {
+  letter-spacing: 1px;
+  padding: 3px 0px;
 }
