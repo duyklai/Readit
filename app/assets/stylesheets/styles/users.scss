@@ -14,14 +14,14 @@
   width: 25%;
 }
 
-.tab {
+.tab-div {
   overflow: hidden;
   border-bottom: 1px dashed #000c40;
   width: 95%;
   margin-left: 10px;
 }
 
-.tablinks {
+.tabs {
   background-color: inherit;
   float: left;
   border: none;
@@ -30,13 +30,86 @@
   padding: 10px 16px;
 }
 
-.tab button:hover {
+.view {
+  display: none;
+}
+
+.tab-div button:hover {
+  background-color: #00146e;
+  color: white;
+}
+
+.tab-div button.active {
   background-color: #000c40;
   color: white;
 }
 
-.tab button.active {
-  background-color: #ccc;
+.profile-posts {
+  width: 1000px;
+  margin: 10px 10px;
+}
+
+.profile-posts h2 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.profile-posts a {
+  text-decoration: none;
+  color: #000c40;
+}
+
+.profile-posts img {
+  float: left;
+  margin: 5px 10px 0px 10px;
+
+  height: 50px;
+  width: 50px;
+
+  border: 1px solid black;
+  border-radius: 15px;
+
+  cursor: pointer;
+}
+
+.profile-posts-info {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #919191;
+}
+
+.profile-posts-info a {
+  text-decoration: none;
+  color: #919191;
+}
+
+.profile-posts-info a:hover {
+  background-color: rgb(221, 223, 221);
+  border-radius: 5px;
+}
+
+.profile-posts-comments-info {
+  padding-top: 5px;
+}
+
+.profile-comments {
+  margin: 10px 20px;
+}
+
+.profile-comments-post-name {
+  color: #919191;
+}
+
+.profile-comments-post-name a,
+.profile-comments-indent a {
+  color: #000c40;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.profile-comments-indent {
+  margin-left: 40px;
+  margin-top: 10px;
 }
 
 .user-div h2 {

@@ -48,7 +48,7 @@
   <div class="comment-div">
     <% @post.comments.each do |comment| %>
       <div class="comment-info-div">
-        <%= comment.user.username %>&emsp;<%= comment.points %>&emsp;<%= time_diff(comment.created_at) %> ago
+        <%= comment.user.username %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago
       </div>
       <div class="comment-body">
         <%= comment.body %>
