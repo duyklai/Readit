@@ -41,9 +41,12 @@
   </div>
 </div> <%# End of original-post %>
 
-
 <div class="comments-section">
-  <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
+  <% if user_signed_in? %>
+    <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
+  <% else %>
+    <%= button_to "Login to comment", new_user_session_path, :method => "get" %>
+  <% end %>
 
   <div class="comment-div">
     <% @post.comments.each do |comment| %>

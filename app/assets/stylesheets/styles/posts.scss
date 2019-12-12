@@ -86,7 +86,8 @@
   width: 800px;
 }
 
-.comments-section button {
+.comments-section button,
+.button_to input {
   margin: 15px 0px 6px 30px;
   padding: 7px;
 
@@ -101,7 +102,8 @@
   letter-spacing: 1px;
 }
 
-.comments-section button:hover {
+.comments-section button:hover,
+.button_to input:hover {
   background-color: #00146e;
   cursor: pointer;
 }
