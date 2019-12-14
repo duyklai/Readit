@@ -121,3 +121,86 @@
   border-bottom: 2px solid black;
   padding-bottom: 5px;
 }
+
+.new-post-container {
+  text-align: center;
+  margin: 20px 0 0 0;
+  letter-spacing: 1px;
+}
+
+.new-post-container h2 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #000c40;
+}
+
+.new-post-container .field {
+  margin: 20px auto;
+  width: 300px;
+}
+
+.new-post-container input {
+  padding: 8px;
+  width: 225px;
+  border: 1px solid gray;
+  border-left: 3px solid #000c40;
+  border-radius: 5px;
+}
+
+.new-post-container .title,
+.new-post-container .body {
+  width: 620px;
+}
+.new-post-container input[name="post[title]"] {
+  width: 600px;
+}
+
+.new-post-container textarea {
+  margin-left: auto;
+  margin-right: auto;
+  resize: none;
+  overflow: auto;
+  border-radius: 5px;
+
+  width: 610px;
+  height: 200px;
+}
+
+.new-post-container input[name="commit"] {
+  width: 100px;
+
+  margin-right: 5px;
+  padding: 5px 9px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: #000c40;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.new-post-container a {
+  padding: 5px 9px;
+
+  background-color: #000c40;
+  color: white;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.new-post-container [name="commit"]:hover,
+.new-post-container a:hover {
+  background-color: #00146e;
+  cursor: pointer;
+}
