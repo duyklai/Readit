@@ -1,42 +1,45 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="new-post-container">
+  <%= form_with(model: post, local: true) do |form| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <h2>Create a Post</h2>
+    <div class="field title">
+      <%= form.text_field :title, placeholder: "Title" %>
+    </div>
+
+    <div class="field">
+      <%= form.text_field :tag, placeholder: "Select or create a tag", list: "post_tags" %>
+      <datalist id="post_tags">
+        <% Post.distinct.pluck(:tag).each do |tag| %>
+          <option value="<%= tag %>"><%= tag %></option>
+        <% end %>
+      </datalist>
+    </div>
+
+    <div class="field body">
+      <%= form.text_area :body, placeholder: "Enter your text here..." %>
+    </div>
+    
+    <div class="field">
+      <%= form.hidden_field :user_id %>
+    </div>
+
+    <div class="field">
+      <%= form.hidden_field :points, value: 1 %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+      <%= link_to 'Back', root_path %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :tag %>
-    <%= form.text_field :tag %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :points %>
-    <%= form.number_field :points %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
