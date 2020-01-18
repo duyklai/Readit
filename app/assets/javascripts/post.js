@@ -1,4 +1,9 @@
-function submitCommentForm(post_id, user_id) {
+function submitCommentForm(
+  post_id,
+  user_id,
+  parent_id = null,
+  ancestry_id = null
+) {
   // Get input form from comments/new.html.erb form
   Rails.ajax({
     url: `/comments/new?post_id=${post_id}`,
@@ -12,6 +17,18 @@ function submitCommentForm(post_id, user_id) {
           input.value = user_id;
         } else if (input.id == "comment_post_id") {
           input.value = post_id;
+        } else if (input.id == "comment_ancestry") {
+          // When reached the field of ancestry
+          if (ancestry_id != null && ancestry_id != "") {
+            // Check to see if the current comment is root or reply/nested reply
+            input.value = ancestry_id + "/" + parent_id;
+          } else if (parent_id != null) {
+            // If replying to a root comment, fill in field with parent_id
+            input.value = parent_id;
+          } else {
+            // If this is a brand new comment in the post, leave blank
+            input.value = null;
+          }
         }
       });
     },
