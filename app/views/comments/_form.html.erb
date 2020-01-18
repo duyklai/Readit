@@ -15,7 +15,7 @@
     <%= form.hidden_field :user_id %>
     <%= form.hidden_field :post_id %>
     <%= form.hidden_field :points, value: 1 %>
-    <%= form.text_field :ancestry %>
+    <%= form.hidden_field :ancestry %>
     <%= form.text_area :body, placeholder: 'Remember, be nice!' %> <br/>
     <%= form.submit "Save" %>
     <%= link_to 'Cancel', post_path(params[:post_id]), :method => "get"  %>
