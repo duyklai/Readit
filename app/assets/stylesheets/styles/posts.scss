@@ -86,7 +86,7 @@
   width: 800px;
 }
 
-.comments-section button,
+.comments-section .new_comment button,
 .button_to input {
   margin: 15px 0px 6px 30px;
   padding: 7px;
@@ -102,7 +102,7 @@
   letter-spacing: 1px;
 }
 
-.comments-section button:hover,
+.comments-section .new_comment button:hover,
 .button_to input:hover {
   background-color: #00146e;
   cursor: pointer;
@@ -120,6 +120,32 @@
 .comment-body {
   border-bottom: 2px solid black;
   padding-bottom: 5px;
+}
+
+.reply button,
+.comment-body .actions .button_to input {
+  padding: 0;
+  margin: 5px 0 0 0;
+  font-family: inherit;
+
+  color: #919191;
+  text-decoration: none;
+
+  background: transparent;
+  outline: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.reply button:hover,
+.comment-body .actions .button_to input:hover {
+  text-decoration: underline;
+}
+
+.replies,
+.nested_replies {
+  margin-left: 30px;
 }
 
 .new-post-container {
