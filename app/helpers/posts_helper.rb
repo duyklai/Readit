@@ -53,4 +53,10 @@ module PostsHelper
       return "#{num_comments} comments"
     end
   end
+
+  def nested_comments(comments)
+    comments.map do |comment, sub_comments|
+      render("comments", comment: comment) + content_tag(:div, nested_comments(sub_comments), class: "nested_replies")
+    end.join.html_safe
+  end
 end
