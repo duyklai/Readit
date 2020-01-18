@@ -42,20 +42,23 @@
 </div> <%# End of original-post %>
 
 <div class="comments-section">
-  <% if user_signed_in? %>
-    <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
-  <% else %>
-    <%= button_to "Login to comment", new_user_session_path, :method => "get" %>
-  <% end %>
+  <div class="actions new_comment">
+    <% if user_signed_in? %>
+      <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
+    <% else %>
+      <%= button_to "Login to comment", new_user_session_path, :method => "get" %>
+    <% end %>
+  </div>
 
   <div class="comment-div">
     <% @post.comments.each do |comment| %>
-      <div class="comment-info-div">
-        <%= comment.user.username %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago
-      </div>
-      <div class="comment-body">
-        <%= comment.body %>
-      </div>
+      <% if comment.root? %>
+        <% if comment.children? %>
+          <%= nested_comments(comment.subtree.arrange) %>
+        <% else %>
+          <%= render "comments", comment: comment %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
