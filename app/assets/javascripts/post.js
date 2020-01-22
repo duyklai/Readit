@@ -37,3 +37,16 @@ function submitCommentForm(
     }
   });
 }
+
+function editCommentForm(post_id, comment_id) {
+  Rails.ajax({
+    url: `/comments/${comment_id}/edit?post_id=${post_id}`,
+    type: "GET",
+    success: function(response) {
+      document.body.append(response.documentElement);
+    },
+    error: function() {
+      alert("Error. Try again");
+    }
+  });
+}
