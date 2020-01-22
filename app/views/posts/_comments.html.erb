@@ -7,6 +7,10 @@
     <div class="actions reply">
       <% if user_signed_in? %>
         <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>, <%= comment.id %>, '<%= comment.ancestry %>')">reply</button>
+        <% if comment.user == current_user %>
+          <button onclick="editCommentForm(<%= @post.id %>, <%= comment.id %>)">edit</button>
+          <%= link_to 'delete', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       <% else %>
         <%= button_to "reply", new_user_session_path, :method => "get" %>
       <% end %>
