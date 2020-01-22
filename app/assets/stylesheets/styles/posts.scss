@@ -118,15 +118,18 @@
 }
 
 .comment-body {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #00146e;
   padding-bottom: 5px;
 }
 
 .reply button,
+.reply a,
 .comment-body .actions .button_to input {
   padding: 0;
-  margin: 5px 0 0 0;
+  margin: 5px 8px 0 0;
   font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 1px;
 
   color: #919191;
   text-decoration: none;
@@ -139,6 +142,7 @@
 }
 
 .reply button:hover,
+.reply a:hover,
 .comment-body .actions .button_to input:hover {
   text-decoration: underline;
 }
