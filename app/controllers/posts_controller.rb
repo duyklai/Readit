@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :points_up, :points_down]
 
   # GET /posts
   # GET /posts.json
@@ -59,6 +59,34 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def points_up
+    @post = Post.find(params[:id])
+    @post.update_attributes(points: (@post.points + 1))
+    if @post.save
+      respond_to do |format|
+        format.html { redirect_to root_path}
+        format.js
+      end
+    else
+      flash[:notice] = "Error Voting Please Try Again"
+      redirect_to root_path
+    end
+  end
+
+  def points_down
+    @post = Post.find(params[:id])
+    @post.update_attributes(points: (@post.points - 1))
+    if @post.save
+      respond_to do |format|
+        format.html { redirect_to root_path}
+        format.js
+      end
+    else
+      flash[:notice] = "Error Voting Please Try Again"
+      redirect_to root_path
     end
   end
 
