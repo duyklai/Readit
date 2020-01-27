@@ -65,10 +65,17 @@
 .home-inc-points,
 .home-dec-points {
   cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: black;
 }
 
 .home-inc-points {
-  padding-top: 3px;
+  padding-top: 2px;
+}
+
+.home-dec-points {
+  padding-top: 1px;
 }
 
 .home-points {
