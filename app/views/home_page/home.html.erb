@@ -8,9 +8,21 @@
   <% @posts.each do |post| %>
     <div class="post-div">
       <div class="home-post-points">
-        <%= link_to raw("&#9650;"), points_up_post_path(post.id), class: "home-inc-points"%>
-        <span class="home-points"><%= display_points(post.points) %></span>
-        <%= link_to raw("&#9660;"), points_down_post_path(post.id), class: "home-dec-points" %>
+        <% if user_signed_in? && checkVoted(current_user.id, post.id) %>
+          <% if current_user.votes.where(:post_id => post).first.value == "up" %>
+            <%= link_to raw("&#9650;"), points_up_post_path(post.id), class: "home-inc-points voted" %>
+            <span class="home-points"><%= display_points(post.points) %></span>
+            <%= link_to raw("&#9660;"), points_down_post_path(post.id), class: "home-dec-points" %>
+          <% elsif current_user.votes.where(:post_id => post).first.value == "down" %>
+            <%= link_to raw("&#9650;"), points_up_post_path(post.id), class: "home-inc-points" %>
+            <span class="home-points"><%= display_points(post.points) %></span>
+            <%= link_to raw("&#9660;"), points_down_post_path(post.id), class: "home-dec-points voted" %>
+          <% end %>
+        <% else %>
+          <%= link_to raw("&#9650;"), points_up_post_path(post.id), class: "home-inc-points" %>
+          <span class="home-points"><%= display_points(post.points) %></span>
+          <%= link_to raw("&#9660;"), points_down_post_path(post.id), class: "home-dec-points" %>
+        <% end %>
       </div>
       <div class="home-post-title">
         <%= link_to post.title, post_path(post.id) %>
