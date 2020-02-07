@@ -33,12 +33,20 @@
   margin-bottom: 0px;
 }
 
-.inc-points,
-.dec-points {
+.post-show-inc-points,
+.post-show-dec-points {
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: black;
   font-size: 15px;
 }
 
-.points {
+.post-show-dec-points {
+  padding-top: 2px;
+}
+
+.points-span {
   margin-left: -100%;
   margin-right: -100%;
   font-size: 18px;
@@ -50,6 +58,10 @@
   margin-left: 15px;
   padding: 15px 6px 0px 0px;
   text-align: center;
+}
+
+.voted {
+  color: rgb(250, 75, 28) !important;
 }
 
 .post-body {
