@@ -64,6 +64,56 @@ class CommentsController < ApplicationController
     end
   end
 
+  # Custom functions for increasing point value of comment by 1 OR by 2 if user has voted down previously
+  def points_up
+    @comment = Comment.find(params[:id])
+    vote_result = Vote.vote("up", current_user.id, nil, @comment.id)
+    if vote_result
+      if vote_result == "new"
+        @comment.update_attributes(points: (@comment.points + 1))
+      else
+        @comment.update_attributes(points: (@comment.points + 2))
+      end
+      if @comment.save
+        respond_to do |format|
+          format.html { redirect_to request.referrer}
+          format.js
+        end
+      else
+        flash[:notice] = "Error Voting Please Try Again"
+        redirect_to request.referrer
+      end
+    else
+      flash[:notice] = ""
+      redirect_to request.referrer
+    end
+  end
+
+  # Custom functions for decreasing point value of comment by 1 OR by 2 if user has voted up previously
+  def points_down
+    @comment = Comment.find(params[:id])
+    vote_result = Vote.vote("down", current_user.id, nil, @comment.id)
+    if vote_result
+      if vote_result == "new"
+        @comment.update_attributes(points: (@comment.points - 1))
+      else
+        @comment.update_attributes(points: (@comment.points - 2))
+      end
+      if @comment.save
+        respond_to do |format|
+          format.html { redirect_to request.referrer}
+          format.js
+        end
+      else
+        flash[:notice] = "Error Voting Please Try Again"
+        redirect_to request.referrer
+      end
+    else
+      flash[:notice] = ""
+      redirect_to request.referrer
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
