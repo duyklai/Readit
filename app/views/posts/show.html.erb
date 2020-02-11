@@ -5,20 +5,20 @@
 
     <div class="post-points">
       <% if user_signed_in? && checkVoted(current_user.id, @post.id) %>
-      <% if current_user.votes.where(:post_id => @post).first.value == "up" %>
-        <%= link_to raw("&#9650;"), points_up_post_path(@post.id), class: "post-show-inc-points voted" %>
-        <span class="points-span"><%= display_points(@post.points) %></span>
-        <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points" %>
-      <% elsif current_user.votes.where(:post_id => @post).first.value == "down" %>
+        <% if current_user.votes.where(:post_id => @post).first.value == "up" %>
+          <%= link_to raw("&#9650;"), points_up_post_path(@post.id), class: "post-show-inc-points voted" %>
+          <span class="points-span"><%= display_points(@post.points) %></span>
+          <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points" %>
+        <% elsif current_user.votes.where(:post_id => @post).first.value == "down" %>
+          <%= link_to raw("&#9650;"), points_up_post_path(@post.id), class: "post-show-inc-points" %>
+          <span class="points-span"><%= display_points(@post.points) %></span>
+          <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points voted" %>
+        <% end %>
+      <% else %>
         <%= link_to raw("&#9650;"), points_up_post_path(@post.id), class: "post-show-inc-points" %>
         <span class="points-span"><%= display_points(@post.points) %></span>
-        <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points voted" %>
+        <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points" %>
       <% end %>
-    <% else %>
-      <%= link_to raw("&#9650;"), points_up_post_path(@post.id), class: "post-show-inc-points" %>
-      <span class="points-span"><%= display_points(@post.points) %></span>
-      <%= link_to raw("&#9660;"), points_down_post_path(@post.id), class: "post-show-dec-points" %>
-    <% end %>
     </div>
     <div class="post-title">
       <%= @post.title %>
