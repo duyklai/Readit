@@ -62,10 +62,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # Custom functions for increasing point value of post by 1 OR by 2 if user has voted down previously
   def points_up
     @post = Post.find(params[:id])
-    if vote("up", current_user.id, @post.id)
-      @post.update_attributes(points: (@post.points + 1))
+    vote_result = Vote.vote("up", current_user.id, @post.id)
+    if vote_result
+      if vote_result == "new"
+        @post.update_attributes(points: (@post.points + 1))
+      else
+        @post.update_attributes(points: (@post.points + 2))
+      end
       if @post.save
         respond_to do |format|
           format.html { redirect_to request.referrer}
@@ -81,10 +87,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # Custom functions for decreasing point value of post by 1 OR by 2 if user has voted up previously
   def points_down
     @post = Post.find(params[:id])
-    if vote("down", current_user.id , @post.id)
-      @post.update_attributes(points: (@post.points - 1))
+    vote_result = Vote.vote("down", current_user.id , @post.id)
+    if vote_result
+      if vote_result == "new"
+        @post.update_attributes(points: (@post.points - 1))
+      else
+        @post.update_attributes(points: (@post.points - 2))
+      end
       if @post.save
         respond_to do |format|
           format.html { redirect_to request.referrer}
@@ -98,26 +110,6 @@ class PostsController < ApplicationController
       flash[:notice] = ""
       redirect_to request.referrer
     end
-  end
-
-  # Custom function to find/create new vote record of the post/comment being voted on
-  # Returns true if vote has been change/new Vote record; Returns false if vote has not been changed
-  def vote(value, user, post = nil, comment = nil)
-    if Vote.where(:user_id => user, :post_id => post, :comment_id => comment).first
-      vote = Vote.where(:user_id => user, :post_id => post, :comment_id => comment).first
-    else
-      vote = Vote.new(value: value, user_id: user, post_id: post, comment_id: comment)
-      vote.save
-      return true
-    end
-
-    if vote.value != value
-      vote.value = value
-      vote.save
-      return true
-    end
-
-    return false
   end
 
   private
