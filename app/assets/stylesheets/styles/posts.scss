@@ -1,6 +1,8 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Styling for post (show.html.erb)
 .original-post {
   background-color: #f1f1f1;
   box-shadow: 2px 2px 5px #292929;
@@ -90,6 +92,7 @@
   text-decoration: underline;
 }
 
+// Styling for comments section of the post
 .comments-section {
   background-color: #f1f1f1;
   box-shadow: 2px 2px 5px #292929;
@@ -120,6 +123,11 @@
   cursor: pointer;
 }
 
+.comment-voting-div {
+  float: left;
+  padding: 8px 5px 0 0;
+}
+
 .comment-div {
   margin-left: 30px;
   padding: 0px 30px 10px 0px;
@@ -134,11 +142,15 @@
   padding-bottom: 5px;
 }
 
+.reply {
+  padding-left: 21px;
+}
+
 .reply button,
 .reply a,
 .comment-body .actions .button_to input {
   padding: 0;
-  margin: 5px 8px 0 0;
+  margin: 5px 8px 0 0px;
   font-family: inherit;
   font-size: 13px;
   letter-spacing: 1px;
@@ -164,6 +176,7 @@
   margin-left: 30px;
 }
 
+// Styling for new.html.erb
 .new-post-container {
   text-align: center;
   margin: 20px 0 0 0;
