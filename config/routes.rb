@@ -10,6 +10,11 @@ Rails.application.routes.draw do
       get "points_down"
     end
   end
-  resources :comments
+  resources :comments do
+    member do
+      get "points_up"
+      get "points_down"
+    end
+  end
   resources :votes
 end
