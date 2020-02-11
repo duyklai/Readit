@@ -1,4 +1,18 @@
 <div class="comment">
+  <div class="comment-voting-div">
+    <% if user_signed_in? && checkVoted(current_user.id, nil, comment.id) %>
+      <% if current_user.votes.where(:comment_id => comment).first.value == "up" %>
+        <%= link_to raw("&#9650;"), points_up_comment_path(comment.id), class: "post-show-inc-points voted" %>
+        <%= link_to raw("&#9660;"), points_down_comment_path(comment.id), class: "post-show-dec-points" %>
+      <% elsif current_user.votes.where(:comment_id => comment).first.value == "down" %>
+        <%= link_to raw("&#9650;"), points_up_comment_path(comment.id), class: "post-show-inc-points" %>
+        <%= link_to raw("&#9660;"), points_down_comment_path(comment.id), class: "post-show-dec-points voted" %>
+      <% end %>
+    <% else %>
+      <%= link_to raw("&#9650;"), points_up_comment_path(comment.id), class: "post-show-inc-points" %>
+      <%= link_to raw("&#9660;"), points_down_comment_path(comment.id), class: "post-show-dec-points" %>
+    <% end %>
+  </div>
   <div class="comment-info-div">
     <%= comment.user.username %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago
   </div>
