@@ -176,17 +176,22 @@
   margin-left: 30px;
 }
 
+// Styling for new/edit form's title
+.post-form-title {
+  text-align: center;
+  margin: 20px 0 0 0;
+
+  letter-spacing: 1px;
+  font-size: 50px;
+  font-weight: bold;
+  color: #000c40;
+}
+
 // Styling for new.html.erb
 .new-post-container {
   text-align: center;
   margin: 20px 0 0 0;
   letter-spacing: 1px;
-}
-
-.new-post-container h2 {
-  font-size: 50px;
-  font-weight: bold;
-  color: #000c40;
 }
 
 .new-post-container .field {
