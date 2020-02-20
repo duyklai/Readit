@@ -101,6 +101,33 @@
   width: 800px;
 }
 
+.sorting {
+  margin: 15px 0px 6px 30px;
+  padding: 7px;
+  display: inline-block;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: #000c40;
+
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.sorting:hover {
+  background-color: #00146e;
+}
+
+.sortby {
+  color: white;
+  text-decoration: none;
+}
+
+.new_comment {
+  float: left;
+}
+
 .comments-section .new_comment button,
 .button_to input {
   margin: 15px 0px 6px 30px;
@@ -140,10 +167,7 @@
 .comment-body {
   border-bottom: 2px solid #00146e;
   padding-bottom: 5px;
-}
-
-.reply {
-  padding-left: 21px;
+  padding-left: 20px;
 }
 
 .reply button,
