@@ -37,11 +37,13 @@
     </table>
   </div> <%# End of post-heading %>
 
-  <div class="post-body-div">
-    <div class="post-body">
-      <%= @post.body %>
-    </div>
-  </div> <%# End of post-body-div %>
+  <% if @post.body != "" %>
+    <div class="post-body-div">
+      <div class="post-body">
+        <%= @post.body %>
+      </div>
+    </div> <%# End of post-body-div %>
+  <% end %>
 
   <div class="post-extra-div">
     <%= link_to display_comments(@post.comments.length), post_path(@post.id) %>
@@ -54,21 +56,51 @@
 </div> <%# End of original-post %>
 
 <div class="comments-section">
-  <div class="actions new_comment">
-    <% if user_signed_in? %>
-      <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
-    <% else %>
-      <%= button_to "Login to comment", new_user_session_path, :method => "get" %>
-    <% end %>
+  <div class="actions">
+    <div class="new_comment">
+      <% if user_signed_in? %>
+        <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>)">Add comment</button>
+      <% else %>
+        <%= button_to "Login to comment", new_user_session_path, :method => "get" %>
+      <% end %>
+    </div>
+
+    <div class="sorting">
+      <% if request.original_url.include? "Top" %>
+        <%= link_to "Sort by relevance", "/posts/1?=Relevance", :class => "sortby", :id => "relevance" %>
+      <% else %>
+        <%= link_to "Sort by top", "/posts/1?=Top", :class => "sortby", :id => "top" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="comment-div">
-    <% @post.comments.each do |comment| %>
-      <% if comment.root? %>
+    <% if request.original_url.include? "Top" %>
+      <% @comment_array = Array.new %>
+
+      <% @post.comments.each do |comment| %>
+        <% if comment.root? %>
+          <% @comment_array << comment %>
+        <% end %>
+      <% end %>
+
+      <% @comment_array = @comment_array.sort_by { |x| x.points}.reverse %>
+
+      <% @comment_array.each do |comment| %>
         <% if comment.children? %>
           <%= nested_comments(comment.subtree.arrange) %>
         <% else %>
           <%= render "comments", comment: comment %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% @post.comments.each do |comment| %>
+        <% if comment.root? %>
+          <% if comment.children? %>
+            <%= nested_comments(comment.subtree.arrange) %>
+          <% else %>
+            <%= render "comments", comment: comment %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
