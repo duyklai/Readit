@@ -65,7 +65,7 @@
       <% end %>
     </div>
 
-    <div class="sorting">
+    <div class="sort">
       <% if request.original_url.include? "Top" %>
         <%= link_to "Sort by relevance", "/posts/1?=Relevance", :class => "sortby", :id => "relevance" %>
       <% else %>
