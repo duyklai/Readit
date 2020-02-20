@@ -101,22 +101,32 @@
   width: 800px;
 }
 
-.sorting {
+.comments-section .new_comment button,
+.button_to input,
+.sort {
   margin: 15px 0px 6px 30px;
   padding: 7px;
-  display: inline-block;
 
   border: 1px solid black;
   border-radius: 5px;
 
   background-color: #000c40;
+  color: white;
 
   text-align: center;
+  text-decoration: none;
   letter-spacing: 1px;
 }
 
-.sorting:hover {
+.sort {
+  display: inline-block;
+}
+
+.comments-section .new_comment button:hover,
+.button_to input:hover,
+.sort:hover {
   background-color: #00146e;
+  cursor: pointer;
 }
 
 .sortby {
@@ -126,28 +136,6 @@
 
 .new_comment {
   float: left;
-}
-
-.comments-section .new_comment button,
-.button_to input {
-  margin: 15px 0px 6px 30px;
-  padding: 7px;
-
-  border: 1px solid black;
-  border-radius: 5px;
-
-  background-color: #000c40;
-  color: white;
-
-  text-align: center;
-  text-decoration: none;
-  letter-spacing: 1px;
-}
-
-.comments-section .new_comment button:hover,
-.button_to input:hover {
-  background-color: #00146e;
-  cursor: pointer;
 }
 
 .comment-voting-div {
