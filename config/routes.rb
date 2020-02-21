@@ -17,4 +17,5 @@ Rails.application.routes.draw do
     end
   end
   resources :votes
+  resources :tags
 end
