@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :votes, dependent: :destroy
   belongs_to :user
+  belongs_to :tag
 end
