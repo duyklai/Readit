@@ -1,8 +1,8 @@
-<div class="column content-div">
+<div class="column content-div profile">
   <div class="tab-div">
-    <button class="tabs" onclick="profileSelectView(event, 'overview')" id="default">Overview</button>
-    <button class="tabs" onclick="profileSelectView(event, 'posts')">Posts</button>
-    <button class="tabs" onclick="profileSelectView(event, 'comments')">Comments</button>
+    <button class="tabs" onclick="pageSelectView(event, 'overview')" id="default">Overview</button>
+    <button class="tabs" onclick="pageSelectView(event, 'posts')">Posts</button>
+    <button class="tabs" onclick="pageSelectView(event, 'comments')">Comments</button>
   </div>
   <div class="view" id="overview">
     <% combined = (@user.posts.all + @user.comments.all).sort_by { |p| [p.created_at] }.reverse %>
@@ -23,7 +23,7 @@
       <% else %>
         <div class="profile-comments">
           <div class="profile-comments-post-name">
-            <%= link_to element.user.username, user_path(element.user.id) %> commented on <%= link_to element.post.title, comment_path(element.id) %> in <%= element.post.tag %>
+            <%= link_to element.user.username, user_path(element.user.id) %> commented on <%= link_to element.post.title, comment_path(element.id) %> in <%= link_to element.post.tag.name, tag_path(element.post.tag.id) %>
           </div>
           <div class="profile-comments-indent">
             <p class="faded"><%= link_to element.user.username, user_path(element.user.id) %>&emsp;<%= element.points %> point&emsp;<%= time_diff(element.created_at) %> ago</p>
@@ -36,24 +36,24 @@
   <div class="view" id="posts">
     <% @user.posts.reverse.each do |post| %>
       <div class="profile-posts">
-          <%= link_to image_tag('logo.png'), post_path(post.id) %>
-          <div>
-            <h2><%= link_to post.title, post_path(post.id) %></h2>
-            <div class="profile-posts-info">
-              Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %> <br/>
-              <div class="profile-posts-comments-info">
-                <%= link_to display_comments(post.comments.length), post_path(post.id) %>
-              </div>
+        <%= link_to image_tag('logo.png'), post_path(post.id) %>
+        <div>
+          <h2><%= link_to post.title, post_path(post.id) %></h2>
+          <div class="profile-posts-info">
+            Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %> <br/>
+            <div class="profile-posts-comments-info">
+              <%= link_to display_comments(post.comments.length), post_path(post.id) %>
             </div>
-          </div>  
-        </div>
+          </div>
+        </div>  
+      </div>
     <% end %>
   </div>
   <div class="view" id="comments">
     <% @user.comments.reverse.each do |comment| %>
       <div class="profile-comments">
         <div class="profile-comments-post-name">
-            <%= link_to comment.user.username, user_path(comment.user.id) %> commented on <%= link_to comment.post.title, comment_path(comment.id) %> in <%= comment.post.tag %>
+            <%= link_to comment.user.username, user_path(comment.user.id) %> commented on <%= link_to comment.post.title, comment_path(comment.id) %> in <%= link_to comment.post.tag.name, tag_path(comment.post.tag.id) %>
         </div>
         <div class="profile-comments-indent">
             <p class="faded"><%= link_to comment.user.username, user_path(comment.user.id) %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago</p>
