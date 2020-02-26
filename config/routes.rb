@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [:show]
+  resources :tags
   resources :posts do
     member do
       get "points_up"
@@ -17,5 +18,4 @@ Rails.application.routes.draw do
     end
   end
   resources :votes
-  resources :tags
 end
