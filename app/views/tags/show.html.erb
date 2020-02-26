@@ -1,9 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="column content-div tag-page">
+  <div class="tab-div">
+    <button class="tabs" onclick="pageSelectView(event, 'overview')" id="default">Overview</button>
+    <button class="tabs" onclick="pageSelectView(event, 'edit')">Edit</button>
+  </div>
+  <% @post_count = 0 %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
+  <div class="view" id="overview">
+    <% @tag.posts.each do |post| %>
+      <% @post_count += 1 %>
+      <div class="profile-posts">
+        <%= link_to image_tag('logo.png'), post_path(post.id) %>
+        <div>
+          <h2><%= link_to post.title, post_path(post.id) %></h2>
+          <div class="profile-posts-info">
+            Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %> <br/>
+            <div class="profile-posts-comments-info">
+              <%= link_to display_comments(post.comments.length), post_path(post.id) %>
+            </div>
+          </div>
+        </div>  
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+  <div class="view" id="edit">
+    <%= form_with(model: @tag, local: true) do |form| %>
+      <% if @tag.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+    
+          <ul>
+          <% tag.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+      <div class="field tag-edit">
+        <%= form.text_field :name %>
+      </div>
+    
+      <div class="actions tag-edit-submit">
+        <%= form.submit "Update tag name" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="column tag-info-div">
+  <h2><%= @tag.name %></h2>
+  <p><span class="bold"><%= @post_count %></span> posts has this tag</p>
+  <p>This tag is <%= time_diff(@tag.created_at) %> old</p>
+  
+  <div class="tag_select">
+    <select onchange="window.location=this.value">
+      <option value="" disabled selected>Select Tag</option>
+      <% Tag.all.each do |tag| %> 
+        <option value="<%= tag.id %>"><%= tag.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+</div>
