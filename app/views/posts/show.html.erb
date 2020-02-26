@@ -27,7 +27,7 @@
     <table class="post-info-table">
       <tbody class="post-info-tbody">
         <tr>
-          <td><%= @post.tag %></td>
+          <td><%= link_to Tag.find_by_id(@post.tag_id).name, tag_path(@post.tag_id) %></td>
         </tr>
         <tr>
           <td>Posted <%= time_diff(@post.created_at) %> ago</td>
