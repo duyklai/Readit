@@ -1,10 +1,10 @@
 document.addEventListener("turbolinks:load", function() {
-  if (document.querySelector(".column")) {
+  if (document.querySelector(".profile")) {
     document.getElementById("default").click();
   }
 });
 
-function profileSelectView(e, viewName) {
+function pageSelectView(e, viewName) {
   var i, viewcontent, tabs;
   // Hiding all of the content
   viewcontent = document.getElementsByClassName("view");
