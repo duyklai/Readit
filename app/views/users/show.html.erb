@@ -3,6 +3,12 @@
     <button class="tabs" onclick="pageSelectView(event, 'overview')" id="default">Overview</button>
     <button class="tabs" onclick="pageSelectView(event, 'posts')">Posts</button>
     <button class="tabs" onclick="pageSelectView(event, 'comments')">Comments</button>
+
+    <% if @user == current_user %>
+      <div class="actions delete">
+        <%= link_to 'Delete account', @user, method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %>
+      </div>
+    <% end %>
   </div>
   <div class="view" id="overview">
     <% combined = (@user.posts.all + @user.comments.all).sort_by { |p| [p.created_at] }.reverse %>
