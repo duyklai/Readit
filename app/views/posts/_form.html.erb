@@ -16,10 +16,10 @@
     </div>
 
     <div class="field">
-      <%= form.text_field :tag, placeholder: "Select or create a tag", list: "post_tags" %>
-      <datalist id="post_tags">
-        <% Post.distinct.pluck(:tag).each do |tag| %>
-          <option value="<%= tag %>"><%= tag %></option>
+      <%= form.text_field :tag, placeholder: "Select or create a tag", list: "tag_list" %>
+      <datalist id="tag_list">
+        <% Tag.all.each do |tag| %>
+          <option><%= tag.name %></option>
         <% end %>
       </datalist>
     </div>
