@@ -25,12 +25,16 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(post_params)
-
+    @tag = Tag.find_by_name(post_params[:tag]) || Tag.create(:name => post_params[:tag])
+    tag_id_post_params = post_params
+    tag_id_post_params[:tag] = @tag
+    @post = current_user.posts.build(tag_id_post_params)
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
+        redirect_to root_path and return
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -41,8 +45,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @tag = Tag.find_by_name(post_params[:tag]) || Tag.create(:name => post_params[:tag])
+    tag_id_post_params = post_params
+    tag_id_post_params[:tag] = @tag
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(tag_id_post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
