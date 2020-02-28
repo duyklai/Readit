@@ -30,6 +30,21 @@
   padding: 10px 16px;
 }
 
+.actions.delete {
+  float: right;
+  display: inline-block;
+  padding-top: 10px;
+}
+
+.actions.delete a {
+  color: #919191;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .view {
   display: none;
 }
