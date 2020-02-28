@@ -27,7 +27,11 @@
     <table class="post-info-table">
       <tbody class="post-info-tbody">
         <tr>
-          <td><%= link_to Tag.find_by_id(@post.tag_id).name, tag_path(@post.tag_id) %></td>
+          <% if Tag.find_by_id(@post.tag_id) %>
+            <td><%= link_to Tag.find_by_id(@post.tag_id).name, tag_path(@post.tag_id) %></td>
+          <% else %>
+            <td><span class="faded">unlisted tags</span></td>
+          <% end %>
         </tr>
         <tr>
           <td>Posted <%= time_diff(@post.created_at) %> ago</td>
