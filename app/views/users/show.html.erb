@@ -75,4 +75,10 @@
   <p><span class="bold"><%= @user.post_total %></span> post points</p>
   <p><span class="bold"><%= @user.comment_total %></span> comment points</p>
   <p>This account is <%= time_diff(@user.created_at) %> old</p>
+  <% if !@user.admin? && (user_signed_in? && current_user.admin?) %>
+    <%= form_for @user do |f| %>
+      <%= f.hidden_field :admin, :value => "true" %>
+      <%= f.submit "Make admin" %>
+    <% end %>
+  <% end %>
 </div>
