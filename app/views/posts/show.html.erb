@@ -52,7 +52,7 @@
   <div class="post-extra-div">
     <%= link_to display_comments(@post.comments.length), post_path(@post.id) %>
     <a href="#">share</a>
-    <% if @post.user == current_user %>
+    <% if @post.user == current_user || (user_signed_in? && current_user.admin?) %>
       <%= link_to 'edit', edit_post_path(@post) %>
       <%= link_to 'delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
