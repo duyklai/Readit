@@ -2,6 +2,12 @@
   <div class="tab-div">
     <button class="tabs" onclick="pageSelectView(event, 'overview')" id="default">Overview</button>
     <button class="tabs" onclick="pageSelectView(event, 'edit')">Edit</button>
+
+    <% if user_signed_in? && current_user.admin? %>
+      <div class="actions delete">
+        <%= link_to 'Delete tag', @tag, method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %>
+      </div>
+    <% end %>
   </div>
   <% @post_count = 0 %>
 
@@ -24,26 +30,30 @@
   </div>
 
   <div class="view" id="edit">
-    <%= form_with(model: @tag, local: true) do |form| %>
-      <% if @tag.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
-    
-          <ul>
-          <% tag.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+    <% if user_signed_in? && current_user.admin? %>
+      <%= form_with(model: @tag, local: true) do |form| %>
+        <% if @tag.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+      
+            <ul>
+            <% tag.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      
+        <div class="field tag-edit">
+          <%= form.text_field :name %>
+        </div>
+      
+        <div class="actions tag-edit-submit">
+          <%= form.submit "Update tag name" %>
         </div>
       <% end %>
-    
-      <div class="field tag-edit">
-        <%= form.text_field :name %>
-      </div>
-    
-      <div class="actions tag-edit-submit">
-        <%= form.submit "Update tag name" %>
-      </div>
+    <% else %>
+      <p class="no-permission">You do not have permission to edit tag names.</p>
     <% end %>
   </div>
 </div>
