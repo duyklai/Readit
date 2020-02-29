@@ -137,3 +137,23 @@
   font-size: 17px;
   padding: 3px 0px 3px 1px;
 }
+
+.edit_user input {
+  margin-top: 4px;
+  padding: 7px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  background-color: #000c40;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.edit_user input:hover {
+  background-color: #00146e;
+  cursor: pointer;
+}
