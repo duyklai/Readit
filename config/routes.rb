@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'home_page/home'
   
   devise_for :users
-  resources :users, only: [:show]
+  resources :users
   resources :tags
   resources :posts do
     member do
