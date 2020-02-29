@@ -25,12 +25,14 @@ module PostsHelper
         return "#{hours.to_s} hours"
       end
     elsif hours >= 24
-      hours = hours / 24
-      if hours == 1
+      days = hours / 24
+      if days == 1
         return "#{hours.to_s} day"
       else
         return "#{hours.to_s} days"
       end
+    else
+      return "Less than 1 minute"
     end
   end
 
