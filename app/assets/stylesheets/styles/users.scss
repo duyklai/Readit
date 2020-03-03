@@ -32,7 +32,6 @@
 
 .actions.delete {
   float: right;
-  display: inline-block;
   padding-top: 10px;
 }
 
@@ -57,6 +56,14 @@
 .tab-div button.active {
   background-color: #000c40;
   color: white;
+}
+
+.post.empty {
+  margin: 15px 0 0 15px;
+
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .profile-posts {
