@@ -12,6 +12,9 @@
   </div>
   <div class="view" id="overview">
     <% combined = (@user.posts.all + @user.comments.all).sort_by { |p| [p.created_at] }.reverse %>
+    <% if combined.empty? %>
+      <p class="post empty">User currently has not posted anything yet.</p>
+    <% end %>
     <% combined.each do |element| %>
       <% if element.is_a?(Post) %>
         <div class="profile-posts">
@@ -40,6 +43,9 @@
     <% end %>
   </div>
   <div class="view" id="posts">
+    <% if @user.posts.empty? %>
+      <p class="post empty">User currently has not posted any posts yet.</p>
+    <% end %>
     <% @user.posts.reverse.each do |post| %>
       <div class="profile-posts">
         <%= link_to image_tag('logo.png'), post_path(post.id) %>
@@ -56,6 +62,9 @@
     <% end %>
   </div>
   <div class="view" id="comments">
+    <% if @user.comments.empty? %>
+      <p class="post empty">User currently has not posted any comments yet.</p>
+    <% end %>
     <% @user.comments.reverse.each do |comment| %>
       <div class="profile-comments">
         <div class="profile-comments-post-name">
