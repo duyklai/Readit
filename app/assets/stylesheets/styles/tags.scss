@@ -61,8 +61,11 @@
   letter-spacing: 1px;
 }
 
+.tag.empty,
 .no-permission {
   margin: 15px 0 0 15px;
+
   font-size: 25px;
   font-weight: bold;
+  font-style: italic;
 }
