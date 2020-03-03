@@ -12,6 +12,9 @@
   <% @post_count = 0 %>
 
   <div class="view" id="overview">
+    <% if @tag.posts.empty? %>
+      <p class="tag empty">This tag currently has no posts.</p>
+    <% end %>
     <% @tag.posts.each do |post| %>
       <% @post_count += 1 %>
       <div class="profile-posts">
@@ -65,7 +68,7 @@
   
   <div class="tag_select">
     <select onchange="window.location=this.value">
-      <option value="" disabled selected>Select Tag</option>
+      <option value="" disabled selected>Select a tag</option>
       <% Tag.all.each do |tag| %> 
         <option value="<%= tag.id %>"><%= tag.name %></option>
       <% end %>
