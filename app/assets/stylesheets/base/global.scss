@@ -26,6 +26,51 @@ body {
   overflow-y: scroll;
 }
 
+.notice_div {
+  position: absolute;
+  border-radius: 15px 50px;
+  left: 25%;
+  top: 0;
+  height: 103px;
+  width: 50%;
+  z-index: 999;
+  background: rgba(0, 12, 66, 0.8);
+
+  .alert,
+  .notice {
+    padding: 40px 0;
+    text-align: center;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  transition: opacity 500ms ease-in-out;
+  -webkit-transition: opacity 500ms ease-in-out;
+}
+
+.notice_div.hide {
+  opacity: 0;
+}
+
+.notice_div.remove {
+  display: none;
+}
+
+.alert_div {
+  .alert {
+    text-align: center;
+    margin-top: 15px;
+
+    font-size: 15px;
+    font-weight: bold;
+    color: red;
+    letter-spacing: 1px;
+  }
+}
+
 .accounts {
   float: right;
   font-size: 20px;
