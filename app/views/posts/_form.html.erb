@@ -15,14 +15,25 @@
       <%= form.text_field :title, placeholder: "Title" %>
     </div>
 
-    <div class="field">
-      <%= form.text_field :tag, placeholder: "Select or create a tag", list: "tag_list" %>
-      <datalist id="tag_list">
-        <% Tag.all.each do |tag| %>
-          <option><%= tag.name %></option>
-        <% end %>
-      </datalist>
-    </div>
+    <% if post.persisted? %>
+      <div class="field">
+        <%= form.text_field :tag_id, :value => Tag.find_by_id(post.tag_id).name, placeholder: "Select or create a tag", list: "tag_list" %>
+        <datalist id="tag_list">
+          <% Tag.all.each do |tag| %>
+            <option><%= tag.name %></option>
+          <% end %>
+        </datalist>
+      </div>
+    <% else %>
+      <div class="field">
+        <%= form.text_field :tag_id, :value => "", placeholder: "Select or create a tag", list: "tag_list" %>
+        <datalist id="tag_list">
+          <% Tag.all.each do |tag| %>
+            <option><%= tag.name %></option>
+          <% end %>
+        </datalist>
+      </div>
+    <% end %>
 
     <div class="field body">
       <%= form.text_area :body, placeholder: "Enter your text here..." %>
