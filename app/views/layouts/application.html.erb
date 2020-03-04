@@ -26,8 +26,17 @@
         </div>
       </header>
     <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
+    <% if notice %>
+      <div class="notice_div">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% elsif alert %>
+      <div class="alert_div">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
