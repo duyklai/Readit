@@ -25,9 +25,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @tag = Tag.find_by_name(post_params[:tag]) || Tag.create(:name => post_params[:tag])
+    @tag = Tag.find_by_name(post_params[:tag_id]) || Tag.create(:name => post_params[:tag_id])
     tag_id_post_params = post_params
-    tag_id_post_params[:tag] = @tag
+    tag_id_post_params[:tag_id] = @tag.id
     @post = current_user.posts.build(tag_id_post_params)
     
     respond_to do |format|
@@ -45,9 +45,9 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    @tag = Tag.find_by_name(post_params[:tag]) || Tag.create(:name => post_params[:tag])
+    @tag = Tag.find_by_name(post_params[:tag_id]) || Tag.create(:name => post_params[:tag_id])
     tag_id_post_params = post_params
-    tag_id_post_params[:tag] = @tag
+    tag_id_post_params[:tag_id] = @tag.id
     respond_to do |format|
       if @post.update(tag_id_post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
@@ -128,6 +128,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :points, :tag, :title, :body)
+      params.require(:post).permit(:user_id, :points, :tag_id, :title, :body)
     end
 end
