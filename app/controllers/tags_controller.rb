@@ -53,6 +53,7 @@ class TagsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to tags_url, notice: 'Tag was successfully destroyed.' }
       format.json { head :no_content }
+      redirect_to root_path and return
     end
   end
 
