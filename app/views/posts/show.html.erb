@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td>Posted <%= time_diff(@post.created_at) %> ago</td>
-          <td>by <%= @post.user.username %></td>
+          <td>by <%= link_to @post.user.username, user_path(@post.user_id) %></td>
         </tr>
       </tbody>
     </table>

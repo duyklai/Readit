@@ -22,7 +22,7 @@
         <div>
           <h2><%= link_to post.title, post_path(post.id) %></h2>
           <div class="profile-posts-info">
-            Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %> <br/>
+            Submitted <%= time_diff(post.created_at) %> ago by <%= link_to post.user.username, user_path(post.user_id) %> <br/>
             <div class="profile-posts-comments-info">
               <%= link_to display_comments(post.comments.length), post_path(post.id) %>
             </div>
