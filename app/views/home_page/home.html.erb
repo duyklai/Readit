@@ -29,7 +29,7 @@
       </div>
       <div class="home-post-info">
         <div class="home-post-date-user">
-          Submitted <%= time_diff(post.created_at) %> ago by <%= post.user.username %>
+          Submitted <%= time_diff(post.created_at) %> ago by <%= link_to post.user.username, user_path(post.user_id) %>
         </div>
         <div class="post-comments-info">
           <%= link_to display_comments(post.comments.length), post_path(post.id) %>
