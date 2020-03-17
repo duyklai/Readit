@@ -62,7 +62,7 @@
 </div>
 
 <div class="column tag-info-div">
-  <h2><%= @tag.name %></h2>
+  <h2><%= sanitize @tag.name %></h2>
   <p><span class="bold"><%= @post_count %></span> posts has this tag</p>
   <p>This tag is <%= time_diff(@tag.created_at) %> old</p>
   
@@ -70,7 +70,7 @@
     <select onchange="window.location=this.value">
       <option value="" disabled selected>Select a tag</option>
       <% Tag.all.each do |tag| %> 
-        <option value="<%= tag.id %>"><%= tag.name %></option>
+        <option value="<%= tag.id %>"><%= sanitize tag.name %></option>
       <% end %>
     </select>
   </div>

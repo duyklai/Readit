@@ -42,7 +42,7 @@
   <% if @post.body != "" %>
     <div class="post-body-div">
       <div class="post-body">
-        <%= @post.body %>
+        <%= sanitize @post.body %>
       </div>
     </div> <%# End of post-body-div %>
   <% end %>

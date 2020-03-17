@@ -17,7 +17,7 @@
     <%= comment.user.username %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago
   </div>
   <div class="comment-body">
-    <%= comment.body %>
+    <%= sanitize comment.body %>
     <div class="actions reply">
       <% if user_signed_in? %>
         <button onclick="submitCommentForm(<%= @post.id %>, <%= current_user.id %>, <%= comment.id %>, '<%= comment.ancestry %>')">reply</button>
