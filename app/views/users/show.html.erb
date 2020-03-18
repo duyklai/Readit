@@ -6,7 +6,7 @@
 
     <% if @user == current_user %>
       <div class="actions delete">
-        <%= link_to 'Delete account', @user, method: :delete, data: { confirm: 'Are you sure you want to delete this account?' } %>
+        <%= link_to 'Edit account', edit_user_registration_path() %>
       </div>
     <% end %>
   </div>
