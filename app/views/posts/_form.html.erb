@@ -15,7 +15,7 @@
       <%= form.text_field :title, placeholder: "Title" %>
     </div>
 
-    <% if post.persisted? %>
+    <% if post.persisted? && Tag.find_by_id(post.tag_id) %>
       <div class="field">
         <%= form.text_field :tag_id, :value => Tag.find_by_id(post.tag_id).name, placeholder: "Select or create a tag", list: "tag_list" %>
         <datalist id="tag_list">
