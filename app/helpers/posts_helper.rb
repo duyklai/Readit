@@ -2,6 +2,10 @@ module PostsHelper
   def time_diff(end_time)
     # Code modified from https://stackoverflow.com/questions/19595840/rails-get-the-time-difference-in-hours-minutes-and-seconds/19596579
     seconds_diff = (Time.now - end_time).to_i.abs
+
+    puts end_time
+    puts Time.now.day
+    puts seconds_diff
     
     hours = seconds_diff / 3600
     seconds_diff -= hours * 3600
@@ -24,12 +28,26 @@ module PostsHelper
       else
         return "#{hours.to_s} hours"
       end
-    elsif hours >= 24
+    elsif hours >= 24 && hours < 720
       days = hours / 24
       if days == 1
-        return "#{hours.to_s} day"
+        return "#{days.to_s} day"
       else
-        return "#{hours.to_s} days"
+        return "#{days.to_s} days"
+      end
+    elsif hours >= 720 && hours < 262800
+      months = (hours / 24) / 30
+      if months == 1
+        return "#{months.to_s} month"
+      else
+        return "#{months.to_s} months"
+      end
+    elsif hours >= 262800
+      years = ((hours / 24) / 30) / 12
+      if years == 1
+        return "#{years.to_s} year"
+      else
+        return "#{years.to_s} years"
       end
     else
       return "Less than 1 minute"
