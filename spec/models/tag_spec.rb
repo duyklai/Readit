@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:tag) { Tag.new(:name => "newtag") }
+
+  it 'is valid' do
+    expect(tag).to be_valid
+  end
 end
