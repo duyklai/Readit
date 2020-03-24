@@ -4,8 +4,8 @@ class Comment < ApplicationRecord
     self.ancestry = nil if self.ancestry.blank?
   end
   validates :body, presence: true
-  belongs_to :post
-  belongs_to :user
+  belongs_to :post, optional: true
+  belongs_to :user, optional: true
 
   has_ancestry
   has_many :votes, dependent: :destroy
