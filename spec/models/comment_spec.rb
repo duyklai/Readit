@@ -1,10 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  let(:user) { User.create(:id => 2, :username => "newuser", :email => "sample@example.com", :password => "password") }
-  let(:tag) { Tag.create(:id => 1, :name => "newtag") }
-  let(:post) { Post.create(id: 1, user_id: user.id, points: 1, tag_id: tag.id, title: 'MyTitle', body: 'MyBody') }
-  let(:comment) { Comment.new(id: 1, user_id: user.id, points: 1, post_id: post.id, body: 'MyBody', ancestry: nil) }
+  let(:comment) { Comment.new(user_id: 1, points: 1, post_id: 1, body: 'MyBody', ancestry: nil) }
 
   it 'is valid' do
     expect(comment).to be_valid
@@ -14,9 +11,26 @@ RSpec.describe Comment, type: :model do
     comment.body = nil
     expect(comment).to_not be_valid
   end
+  
+  it "responds with its points after they're created" do
+    expect(comment.points).to eq(1)
+  end
+
+  it "responds with its body after they're created" do
+    expect(comment.body).to eq('MyBody')
+  end
+
+  it "responds with its user id after they're created" do
+    comment.user_id = 3
+    expect(comment.user_id).to eq(3)
+  end
+
+  it "responds with its post id after they're created" do
+    expect(comment.post_id).to eq(1)
+  end
 
   describe 'hard-coded ancestry testing' do
-    let(:child_comment) { Comment.new(id: 2, user_id: user.id, points: 1, post_id: post.id, body: 'MyBody', ancestry: 1) }
+    let(:child_comment) { Comment.new(user_id: 1, points: 1, post_id: 1, body: 'MyBody', ancestry: 1) }
 
     it 'can have ancestry nil as parent comment' do
       comment.ancestry = nil
