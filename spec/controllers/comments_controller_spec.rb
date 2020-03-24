@@ -41,21 +41,8 @@ RSpec.describe CommentsController, type: :controller do
   # CommentsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "returns a success response" do
-      Comment.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET #show" do
-    it "returns a success response" do
-      comment = Comment.create! valid_attributes
-      get :show, params: {id: comment.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
+  # Not testing for GET #index and GET #show because methods were removed and 
+  # deemed unnecessary 
 
   describe "GET #new" do
     it "returns a success response" do
@@ -74,15 +61,18 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
+      let(:post_original) { Post.create(user_id: 1, points: 1, tag_id: 1, title: "newTitle", body: "newBody") }
+      let(:valid_attributes) { { user_id: 1, points: 1, post_id: post_original.id, body: 'MyBody'} }
+
       it "creates a new Comment" do
         expect {
           post :create, params: {comment: valid_attributes}, session: valid_session
         }.to change(Comment, :count).by(1)
       end
 
-      it "redirects to the created comment" do
+      it "redirects to the associated post" do
         post :create, params: {comment: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Comment.last)
+        expect(response).to redirect_to(post_original)
       end
     end
 
@@ -96,8 +86,10 @@ RSpec.describe CommentsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
+      let(:second_post) { Post.create(user_id: 2, points: 1, tag_id: 2, title: "newTitle", body: "newBody") }
+      let(:valid_attributes) { { user_id: 1, points: 1, post_id: second_post.id, body: 'MyBody'} }
       let(:new_attributes) {
-        { user_id: 2, points: 2, post_id: 2, body: 'MyNewBody' }
+        { user_id: 2, points: 2, post_id: second_post.id, body: 'MyNewBody' }
       }
 
       it "updates the requested comment" do
@@ -106,14 +98,14 @@ RSpec.describe CommentsController, type: :controller do
         comment.reload
         expect(comment.user_id).to eq(2)
         expect(comment.points).to eq(2)
-        expect(comment.post_id).to eq(2)
+        expect(comment.post_id).to eq(1)
         expect(comment.body).to eq('MyNewBody')
       end
 
       it "redirects to the comment" do
         comment = Comment.create! valid_attributes
         put :update, params: {id: comment.to_param, comment: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(comment)
+        expect(response).to redirect_to(second_post)
       end
     end
 
@@ -127,6 +119,9 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
+    let(:post_original) { Post.create(user_id: 1, points: 1, tag_id: 1, title: "newTitle", body: "newBody") }
+    let(:valid_attributes) { { user_id: 1, points: 1, post_id: post_original.id, body: 'MyBody'} }
+
     it "destroys the requested comment" do
       comment = Comment.create! valid_attributes
       expect {
@@ -137,7 +132,7 @@ RSpec.describe CommentsController, type: :controller do
     it "redirects to the comments list" do
       comment = Comment.create! valid_attributes
       delete :destroy, params: {id: comment.to_param}, session: valid_session
-      expect(response).to redirect_to(comments_url)
+      expect(response).to redirect_to(post_original)
     end
   end
 
