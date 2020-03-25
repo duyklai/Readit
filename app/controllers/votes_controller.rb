@@ -13,11 +13,11 @@ class VotesController < ApplicationController
 
     respond_to do |format|
       if @vote.save
-        format.html { redirect_to @vote, notice: 'Vote was successfully created.' }
-        format.json { render :show, status: :created, location: @vote }
+        format.html { redirect_to root_path, notice: 'Vote was created.' }
+        format.json { head :no_content }
       else
-        format.html { render :new }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, notice: 'Error in voting.' }
+        format.json { head :no_content }
       end
     end
   end
@@ -27,11 +27,11 @@ class VotesController < ApplicationController
   def update
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vote }
+        format.html { redirect_to root_path, notice: 'Vote was created.' }
+        format.json { head :no_content }
       else
-        format.html { render :edit }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, notice: 'Error in voting.' }
+        format.json { head :no_content }
       end
     end
   end
@@ -41,7 +41,7 @@ class VotesController < ApplicationController
   def destroy
     @vote.destroy
     respond_to do |format|
-      format.html { redirect_to votes_url, notice: 'Vote was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Vote was destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -54,6 +54,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:type, :user_id, :post_id, :comment_id)
+      params.require(:vote).permit(:value, :user_id, :post_id, :comment_id)
     end
 end
