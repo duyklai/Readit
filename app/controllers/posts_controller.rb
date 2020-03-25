@@ -78,11 +78,10 @@ class PostsController < ApplicationController
           format.js
         end
       else
-        flash[:notice] = "Error Voting Please Try Again"
+        flash[:notice] = "Error voting."
         redirect_to request.referrer
       end
     else
-      flash[:notice] = ""
       redirect_to request.referrer
     end
   end
@@ -103,11 +102,10 @@ class PostsController < ApplicationController
           format.js
         end
       else
-        flash[:notice] = "Error Voting Please Try Again"
+        flash[:notice] = "Error voting."
         redirect_to request.referrer
       end
     else
-      flash[:notice] = ""
       redirect_to request.referrer
     end
   end
