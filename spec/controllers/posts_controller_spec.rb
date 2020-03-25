@@ -124,7 +124,7 @@ RSpec.describe PostsController, type: :controller do
       }.to change(Post, :count).by(-1)
     end
 
-    it "redirects to the posts list" do
+    it "redirects to the home page" do
       post = Post.create! valid_attributes
       delete :destroy, params: {id: post.to_param}
       expect(response).to redirect_to(root_path)

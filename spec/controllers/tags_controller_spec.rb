@@ -123,7 +123,7 @@ RSpec.describe TagsController, type: :controller do
       }.to change(Tag, :count).by(-1)
     end
 
-    it "redirects to the tags list" do
+    it "redirects to the home page" do
       tag = Tag.create! valid_attributes
       delete :destroy, params: {id: tag.to_param}, session: valid_session
       expect(response).to redirect_to(root_path)

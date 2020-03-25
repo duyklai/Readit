@@ -102,7 +102,7 @@ RSpec.describe CommentsController, type: :controller do
         expect(comment.body).to eq('MyNewBody')
       end
 
-      it "redirects to the comment" do
+      it "redirects to the associated post" do
         comment = Comment.create! valid_attributes
         put :update, params: {id: comment.to_param, comment: valid_attributes}, session: valid_session
         expect(response).to redirect_to(second_post)
@@ -129,7 +129,7 @@ RSpec.describe CommentsController, type: :controller do
       }.to change(Comment, :count).by(-1)
     end
 
-    it "redirects to the comments list" do
+    it "redirects to the associated post" do
       comment = Comment.create! valid_attributes
       delete :destroy, params: {id: comment.to_param}, session: valid_session
       expect(response).to redirect_to(post_original)
