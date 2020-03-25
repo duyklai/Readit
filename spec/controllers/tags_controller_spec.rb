@@ -29,25 +29,17 @@ RSpec.describe TagsController, type: :controller do
   # Tag. As you add validations to Tag, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: "MyTag" }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: nil }
   }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # TagsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
-
-  describe "GET #index" do
-    it "returns a success response" do
-      Tag.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
 
   describe "GET #show" do
     it "returns a success response" do
@@ -97,14 +89,14 @@ RSpec.describe TagsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: "MyNewTag" }
       }
 
       it "updates the requested tag" do
         tag = Tag.create! valid_attributes
         put :update, params: {id: tag.to_param, tag: new_attributes}, session: valid_session
         tag.reload
-        skip("Add assertions for updated state")
+        expect(tag.name).to eq("MyNewTag")
       end
 
       it "redirects to the tag" do
@@ -134,7 +126,7 @@ RSpec.describe TagsController, type: :controller do
     it "redirects to the tags list" do
       tag = Tag.create! valid_attributes
       delete :destroy, params: {id: tag.to_param}, session: valid_session
-      expect(response).to redirect_to(tags_url)
+      expect(response).to redirect_to(root_path)
     end
   end
 
