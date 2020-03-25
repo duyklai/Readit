@@ -29,7 +29,7 @@ RSpec.describe PostsController, type: :controller do
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { user_id: 1, points: 1, tag: 'MyTag', title: 'MyTitle', body: 'MyBody' }
+    { user_id: 1, points: 1, tag_id: 1, title: 'MyTitle', body: 'MyBody' }
   }
 
   let(:invalid_attributes) {
@@ -37,14 +37,6 @@ RSpec.describe PostsController, type: :controller do
   }
 
   login_user
-
-  describe "GET #index" do
-    it "returns a success response" do
-      Post.create! valid_attributes
-      get :index, params: {}
-      expect(response).to be_successful
-    end
-  end
 
   describe "GET #show" do
     it "returns a success response" do
@@ -94,7 +86,7 @@ RSpec.describe PostsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { user_id: 1, points: 2, tag: 'MyNewTag', title: 'MyNewTitle', body: 'MyNewBody'}
+        { user_id: 1, points: 2, tag_id: 2, title: 'MyNewTitle', body: 'MyNewBody'}
       }
 
       it "updates the requested post" do
@@ -103,7 +95,7 @@ RSpec.describe PostsController, type: :controller do
         post.reload
         expect(post.user_id).to eq(1)
         expect(post.points).to eq(2)
-        expect(post.tag).to eq('MyNewTag')
+        expect(post.tag_id).to eq(2)
         expect(post.title).to eq('MyNewTitle')
         expect(post.body).to eq('MyNewBody')
       end
@@ -135,7 +127,7 @@ RSpec.describe PostsController, type: :controller do
     it "redirects to the posts list" do
       post = Post.create! valid_attributes
       delete :destroy, params: {id: post.to_param}
-      expect(response).to redirect_to(posts_url)
+      expect(response).to redirect_to(root_path)
     end
   end
 
