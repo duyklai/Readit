@@ -7,15 +7,6 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
   end
 
-  # GET /tags/new
-  def new
-    @tag = Tag.new
-  end
-
-  # GET /tags/1/edit
-  def edit
-  end
-
   # POST /tags
   # POST /tags.json
   def create
