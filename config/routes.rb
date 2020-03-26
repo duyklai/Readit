@@ -3,19 +3,19 @@ Rails.application.routes.draw do
   get 'home_page/home'
   
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :users
-  resources :tags
-  resources :posts do
+  resources :users, only: [:show, :create, :update, :destroy]
+  resources :tags, only: [:show, :create, :update, :destroy]
+  resources :posts, except: :index do
     member do
       get "points_up"
       get "points_down"
     end
   end
-  resources :comments do
+  resources :comments, except: [:index, :show] do
     member do
       get "points_up"
       get "points_down"
     end
   end
-  resources :votes
+  resources :votes, only: [:create, :update, :destroy]
 end
