@@ -3,19 +3,19 @@ require "rails_helper"
 RSpec.describe VotesController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(:get => "/votes").to route_to("votes#index")
+      expect(:get => "/votes").not_to be_routable
     end
 
     it "routes to #new" do
-      expect(:get => "/votes/new").to route_to("votes#new")
+      expect(:get => "/votes/new").not_to be_routable
     end
 
     it "routes to #show" do
-      expect(:get => "/votes/1").to route_to("votes#show", :id => "1")
+      expect(:get => "/votes/1").not_to be_routable
     end
 
     it "routes to #edit" do
-      expect(:get => "/votes/1/edit").to route_to("votes#edit", :id => "1")
+      expect(:get => "/votes/1/edit").not_to be_routable
     end
 
 

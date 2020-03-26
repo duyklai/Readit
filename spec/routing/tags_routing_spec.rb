@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.describe TagsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(:get => "/tags").to route_to("tags#index")
+      expect(:get => "/tags").not_to be_routable
     end
 
     it "routes to #new" do
-      expect(:get => "/tags/new").to route_to("tags#new")
+      expect(:get => "/tags/new").not_to route_to("tags#new")
     end
 
     it "routes to #show" do
@@ -15,7 +15,7 @@ RSpec.describe TagsController, type: :routing do
     end
 
     it "routes to #edit" do
-      expect(:get => "/tags/1/edit").to route_to("tags#edit", :id => "1")
+      expect(:get => "/tags/1/edit").not_to be_routable
     end
 
 

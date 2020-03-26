@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe CommentsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(:get => "/comments").to route_to("comments#index")
+      expect(:get => "/comments").not_to be_routable
     end
 
     it "routes to #new" do
@@ -11,7 +11,7 @@ RSpec.describe CommentsController, type: :routing do
     end
 
     it "routes to #show" do
-      expect(:get => "/comments/1").to route_to("comments#show", :id => "1")
+      expect(:get => "/comments/1").not_to be_routable
     end
 
     it "routes to #edit" do
