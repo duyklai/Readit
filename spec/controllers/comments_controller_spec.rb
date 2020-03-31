@@ -39,8 +39,9 @@ RSpec.describe CommentsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CommentsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  let(:valid_session) { {"warden.user.user.key" => session["warden.user.user.key"]} }
 
+  login_user
   # Not testing for GET #index and GET #show because methods were removed and 
   # deemed unnecessary 
 
