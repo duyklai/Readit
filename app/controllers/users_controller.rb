@@ -1,29 +1,21 @@
 class UsersController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_comment, only: [:show, :update]
 
   def show
     @user = User.find(params[:id])
   end
 
+  # PATCH users/:id
+  # Used for updating admin privileges
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
-        redirect_to @user and return
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-      redirect_to root_path and return
     end
   end
 
