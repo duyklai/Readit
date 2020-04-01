@@ -22,7 +22,10 @@
 
     <div class="actions">
       <%= f.submit "Sign up" %>
-      <%= render "devise/shared/links" %>
+      <%= link_to "Back", :back %>
+    </div>
+    <div class="login-extra">
+      Already have an account? <%= render "devise/shared/links" %>
     </div>
   <% end %>
 </div>
