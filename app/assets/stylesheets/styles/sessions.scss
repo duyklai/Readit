@@ -42,7 +42,8 @@
   font-size: 13px;
 }
 
-.login-div input[name="commit"]:hover {
+.login-div input[name="commit"]:hover,
+.login-div .actions a:hover {
   background-color: #00146e;
   cursor: pointer;
 }
@@ -56,10 +57,29 @@
   width: 13px;
 }
 
+.login-div .actions a {
+  padding: 5px 9px;
+
+  background-color: #000c40;
+  color: white;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  text-decoration: none;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
 .login-extra {
   margin-top: 10px;
 }
 
 .login-extra a {
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
