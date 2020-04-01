@@ -3,10 +3,6 @@ module PostsHelper
     # Code modified from https://stackoverflow.com/questions/19595840/rails-get-the-time-difference-in-hours-minutes-and-seconds/19596579
     seconds_diff = (Time.now - end_time).to_i.abs
 
-    puts end_time
-    puts Time.now.day
-    puts seconds_diff
-    
     hours = seconds_diff / 3600
     seconds_diff -= hours * 3600
     
