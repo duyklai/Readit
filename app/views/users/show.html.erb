@@ -87,7 +87,7 @@
   <% if !@user.admin? && (user_signed_in? && current_user.admin?) %>
     <%= form_for @user do |f| %>
       <%= f.hidden_field :admin, :value => "true" %>
-      <%= f.submit "Make admin" %>
+      <%= f.submit "Make admin", data: { confirm: "Once admin privilege has been granted, it CANNOT be revoked.\n\nAre you sure?" } %>
     <% end %>
   <% end %>
 </div>
