@@ -1,9 +1,16 @@
 class RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
   before_action :configure_permitted_parameters
 
   def destroy
     if current_user.admin? # If current user is admin, check
       if User.where(admin: true).count > 1 # If there is more than 1 admin, allow delete account
+        # Remove associated user from the vote
+        Vote.where(user_id: resource.id).each do |vote|
+          vote.user_id = nil
+          vote.save
+        end
+
         resource.destroy
         respond_to do |format|
           format.html { redirect_to root_path, notice: 'User was successfully deleted.' }
@@ -14,6 +21,12 @@ class RegistrationsController < Devise::RegistrationsController
         redirect_to request.referrer
       end
     else # If current user not admin
+      # Remove associated user from the vote
+      Vote.where(user_id: resource.id).each do |vote|
+        vote.user_id = nil
+        vote.save
+      end
+
       resource.destroy
       respond_to do |format|
         format.html { redirect_to root_path, notice: 'User was successfully deleted.' }
