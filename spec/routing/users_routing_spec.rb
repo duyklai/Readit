@@ -32,7 +32,7 @@ RSpec.describe UsersController, type: :routing do
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/users/1").to route_to("users#destroy", :id => "1")
+      expect(:delete => "/users/1").not_to be_routable
     end
   end
 end
