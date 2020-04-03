@@ -32,7 +32,7 @@
       <% else %>
         <div class="profile-comments">
           <div class="profile-comments-post-name">
-            <%= link_to element.user.username, user_path(element.user.id) %> commented on <%= link_to element.post.title, comment_path(element.id) %> in <%= link_to element.post.tag.name, tag_path(element.post.tag.id) %> by <%= link_to element.post.user.username, user_path(element.post.user_id) %>
+            <%= link_to element.user.username, user_path(element.user.id) %> commented on <%= link_to element.post.title, post_path(element.post_id) %> in <%= link_to element.post.tag.name, tag_path(element.post.tag.id) %> by <%= link_to element.post.user.username, user_path(element.post.user_id) %>
           </div>
           <div class="profile-comments-indent">
             <p class="faded"><%= link_to element.user.username, user_path(element.user.id) %>&emsp;<%= element.points %> point&emsp;<%= time_diff(element.created_at) %> ago</p>
