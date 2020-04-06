@@ -42,7 +42,7 @@
   <% if @post.body != "" %>
     <div class="post-body-div">
       <div class="post-body">
-        <%= sanitize @post.body %>
+        <%= sanitize h(@post.body).gsub(/\n/, '<br/>') %>
       </div>
     </div> <%# End of post-body-div %>
   <% end %>

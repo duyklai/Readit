@@ -36,7 +36,7 @@
           </div>
           <div class="profile-comments-indent">
             <p class="faded"><%= link_to element.user.username, user_path(element.user.id) %>&emsp;<%= element.points %> point&emsp;<%= time_diff(element.created_at) %> ago</p>
-            <%= sanitize element.body %>
+            <%= sanitize h(element.body).gsub(/\n/, '<br/>') %>
           </div>
         </div>
       <% end %>
@@ -72,7 +72,7 @@
         </div>
         <div class="profile-comments-indent">
             <p class="faded"><%= link_to comment.user.username, user_path(comment.user.id) %>&emsp;<%= comment.points %> point&emsp;<%= time_diff(comment.created_at) %> ago</p>
-            <%= sanitize comment.body %>
+            <%= sanitize h(comment.body).gsub(/\n/, '<br/>') %>
         </div>
         </div>
     <% end %>
