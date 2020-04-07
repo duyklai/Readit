@@ -4,6 +4,6 @@ class ChangeTagIdToBeIntegerInPosts < ActiveRecord::Migration[5.2]
     # change_column :posts, :tag_id, :integer
 
     # This line is for postgreSQL deployment/production environment
-    change_column :posts, :tag_id, 'integer USING CAST(column_name AS integer)'
+    change_column :posts, :tag_id, 'integer USING CAST(tag_id AS integer)'
   end
 end
