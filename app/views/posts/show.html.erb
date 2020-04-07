@@ -69,9 +69,9 @@
 
     <div class="sort">
       <% if request.original_url.include? "Top" %>
-        <%= link_to "Sort by relevance", "/posts/1?=Relevance", :class => "sortby", :id => "relevance" %>
+        <%= link_to "Sort by relevance", polymorphic_path(@post, format: 'Relevance'), :class => "sortby", :id => "relevance" %>
       <% else %>
-        <%= link_to "Sort by top", "/posts/1?=Top", :class => "sortby", :id => "top" %>
+        <%= link_to "Sort by top", polymorphic_path(@post, format: 'Top'), :class => "sortby", :id => "top" %>
       <% end %>
     </div>
   </div>
