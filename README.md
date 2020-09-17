@@ -68,7 +68,7 @@ This project was built with Ruby 2.6.5 and Rails 5.2.4.2; To build locally:
 
 Clone the repository:
 
-`$ git clone https://github.com/duyklai/wheres-waldo.git`
+`$ git clone https://github.com/duyklai/Readit.git`
 
 Install the necessary gems:
 
